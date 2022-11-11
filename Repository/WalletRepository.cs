@@ -59,9 +59,9 @@ namespace Zedcrest_Task.Repository
             throw new NotImplementedException();
         }
 
-        public Task<WalletDTO> FundWallet(double amount, Currency currency)
+       /* public Task<WalletDTO> FundWallet(double amount, Currency currency)
         {
-
-        }
+            return WalletDTO;
+        }*/
     }
 }
