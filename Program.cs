@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Zedcrest_Task.Data;
+using Zedcrest_Task.MapperConfiguration;
 using Zedcrest_Task.Models;
 using Zedcrest_Task.Repository;
 using Zedcrest_Task.Repository.Interface;
@@ -14,9 +15,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatabaseContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddAutoMapper(typeof(Mapper));
+builder.Services.AddAutoMapper(typeof(Mappings));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddIdentityCore<User>(q => q.User.RequireUniqueEmail = true);
+builder.Services.AddScoped<IWalletRepository, WalletRepository>();
+//builder.Services.AddIdentityCore<User>(q => q.User.RequireUniqueEmail = true);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

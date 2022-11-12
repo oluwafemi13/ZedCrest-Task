@@ -10,7 +10,8 @@ namespace Zedcrest_Task.MapperConfiguration
         {
             CreateMap<UserRegistrationDTO, User>().ReverseMap();
             CreateMap<Wallet, WalletDTO>().ReverseMap();
-
+            
+            
 
         }
     }
