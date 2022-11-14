@@ -19,12 +19,12 @@ namespace Zedcrest_Task.Repository
 
         
 
-        public async Task<WalletDTO> createWallet(WalletDTO walletDTO)
+        public async Task<IList<WalletDTO>> createWallet(WalletDTO walletDTO)
         {
             var userwallet = _dbContext.Wallets.Where(x => x.Id == walletDTO.Id);
             if (userwallet.Any())
             {
-                return (WalletDTO)userwallet.Where(x => x.Id == walletDTO.Id);
+                return (IList<WalletDTO>)userwallet.Where(x => x.Id == walletDTO.Id);
             }
             var Mapwallet1 = _Mapper.Map< WalletDTO, Wallet>(walletDTO);
             var Mapwallet2 = _Mapper.Map< WalletDTO, Wallet>(walletDTO);
@@ -41,7 +41,7 @@ namespace Zedcrest_Task.Repository
 
             await _dbContext.SaveChangesAsync();
 
-            return walletDTO;
+            return (IList<WalletDTO>)walletDTO;
         }
 
         public Task DeleteWallet(WalletDTO wallet)
